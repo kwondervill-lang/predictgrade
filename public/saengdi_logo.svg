@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 160" width="100%" height="100%">
+  <defs>
+    <!-- Vibrant cyan to deep blue gradient for the arrow -->
+    <linearGradient id="saengdiArrow" x1="0%" y1="100%" x2="70%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- Accent gradient for 'ㅣ' top marker -->
+    <linearGradient id="saengdiMarker" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .brand-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-weight: 900;
+      font-size: 42px;
+      letter-spacing: -1.5px;
+      fill: #0f2756;
+    }
+    .brand-sub {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 2px;
+      fill: #2563eb;
+    }
+    .brand-mark {
+      fill: #0f2756;
+    }
+  </style>
+
+  <!-- === 심볼 '생디' === -->
+  <g transform="translate(10, 8)">
+    <!-- 'ㅅ' 왼쪽 획 (둥근 네이비 획) -->
+    <rect x="58" y="24" width="22" height="66" rx="11" fill="#0f2756" transform="rotate(-38 58 24)" />
+
+    <!-- 'ㅅ' 오른쪽 획 (상승하는 그라데이션 화살표) -->
+    <!-- 화살표 몸통 -->
+    <path d="M 88 78 L 138 28" stroke="url(#saengdiArrow)" stroke-width="22" stroke-linecap="round" />
+    <!-- 화살표 머리 (깔끔한 대칭 삼각형) -->
+    <polygon points="144,14 158,46 124,32" fill="url(#saengdiArrow)" />
+
+    <!-- 'ㅐ' 모음 세로 획 -->
+    <rect x="180" y="22" width="22" height="106" rx="11" fill="#0f2756" />
+
+    <!-- 'ㅇ' 받침 이응 -->
+    <circle cx="132" cy="98" r="28" fill="none" stroke="#0f2756" stroke-width="20" />
+
+    <!-- 'ㄷ' 자음 -->
+    <path d="M 284 32 L 236 32 C 224 32 216 40 216 52 L 216 106 C 216 118 224 126 236 126 L 284 126" 
+          fill="none" stroke="#0f2756" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- 'ㅣ' 모음 (하단 네이비 바 + 상단 포인트 액센트) -->
+    <!-- 상단 민트-시안 액센트 마커 -->
+    <rect x="306" y="22" width="20" height="24" rx="6" fill="url(#saengdiMarker)" />
+    <!-- 하단 네이비 기둥 -->
+    <rect x="306" y="52" width="20" height="76" rx="10" fill="#0f2756" />
+  </g>
+
+  <!-- === 우측 공식 브랜드명 타이포그래피 === -->
+  <g transform="translate(345, 0)">
+    <!-- 메인 슬로건: "학생부를 디자인하다" -->
+    <text x="0" y="78" class="brand-title">학생부를 디자인하다</text>
+    
+    <!-- 서브 카피: "생디 · 입시컨설팅 AI 플랫폼" -->
+    <text x="2" y="116" class="brand-sub">학생부관리 입시컨설팅 AI 플랫폼 · 생디</text>
+  </g>
+</svg>

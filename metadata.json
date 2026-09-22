@@ -1,0 +1,6 @@
+{
+  "name": "생디 내신 등급 예측 프로그램",
+  "description": "학생부관리 입시컨설팅 AI플랫폼 '생디'의 중·고등학생 맞춤형 내신 등급 및 수시 교과 합격률 예측 프로그램",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
