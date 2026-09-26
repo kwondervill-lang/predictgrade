@@ -347,10 +347,20 @@ export const HighScoreReport: React.FC<HighScoreReportProps> = ({
 
                 <div className="flex items-start gap-2 pt-2 border-t border-slate-200/60">
                   <Sparkles className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-slate-900 block mb-0.5">
-                      수시 6장 지원 전략 제언
-                    </span>
+                  <div className="w-full">
+                    <div className="flex items-center justify-between gap-2 mb-0.5">
+                      <span className="font-bold text-slate-900">
+                        수시 6장 지원 전략 제언
+                      </span>
+                      <a
+                        href="https://www.sangdi.net"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] font-bold text-indigo-700 hover:text-indigo-900 underline shrink-0"
+                      >
+                        www.sangdi.net
+                      </a>
+                    </div>
                     <p className="leading-relaxed text-slate-600">
                       {item.strategicAdvice}
                     </p>

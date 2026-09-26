@@ -16,7 +16,9 @@ import {
   FileCheck,
   Award,
   Sparkles,
-  Check
+  Check,
+  Globe,
+  ExternalLink
 } from 'lucide-react';
 
 interface ReportContainerProps {
@@ -66,6 +68,17 @@ export const ReportContainer: React.FC<ReportContainerProps> = ({
         </button>
 
         <div className="flex items-center gap-3">
+          <a
+            href="https://www.sangdi.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-1.5 text-xs font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-3.5 py-2 rounded-xl border border-indigo-200 transition"
+          >
+            <Globe className="w-3.5 h-3.5 text-indigo-600" />
+            <span>생디 공식 사이트 (www.sangdi.net)</span>
+            <ExternalLink className="w-3 h-3 text-indigo-500" />
+          </a>
+
           <button
             type="button"
             onClick={handleShare}
@@ -94,6 +107,20 @@ export const ReportContainer: React.FC<ReportContainerProps> = ({
             <BrandLogo size="lg" showSubtitle={true} clickable={true} showActionButton={true} />
             <div className="mt-2 text-[11px] text-slate-400 font-medium">
               * 상단 로고를 클릭하거나 버튼을 눌러 소지하신 원본 이미지 파일을 언제든 등록·교체할 수 있습니다.
+            </div>
+            {/* 공식 홈페이지 URL 명시 */}
+            <div className="mt-2 flex items-center gap-1.5 text-xs text-indigo-700 font-bold">
+              <Globe className="w-3.5 h-3.5 text-indigo-600" />
+              <span>생디 공식 웹사이트:</span>
+              <a
+                href="https://www.sangdi.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-indigo-900 font-extrabold text-indigo-800 flex items-center gap-0.5"
+              >
+                www.sangdi.net
+                <ExternalLink className="w-3 h-3 inline" />
+              </a>
             </div>
           </div>
 
@@ -168,16 +195,65 @@ export const ReportContainer: React.FC<ReportContainerProps> = ({
           <HighScoreReport prediction={highPrediction} profile={profile} />
         ) : null}
 
+        {/* 생디 공식 웹사이트 및 1:1 심층 입시컨설팅 배너 */}
+        <div className="mt-10 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-7 text-white shadow-md avoid-break">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] font-bold border border-indigo-400/30">
+                <Sparkles className="w-3 h-3 text-indigo-400" />
+                학생부종합전형 & 수시 1:1 맞춤 설계
+              </div>
+              <h3 className="text-lg sm:text-xl font-black text-white">
+                더 정밀한 합격 진단과 학생부 디자인은 <span className="text-indigo-300">생디 공식 사이트</span>에서 만나보세요!
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                개인별 취약 교과 맞춤 보완 로드맵, 고교학점제 선택과목 설계, 대학별 학생부종합전형 역량 분석은 생디(SAENGDI) 전문 컨설턴트 그룹과 함께 완성할 수 있습니다.
+              </p>
+            </div>
+            <div className="shrink-0 flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-2.5">
+              <a
+                href="https://www.sangdi.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-indigo-500/20 transition group"
+              >
+                <Globe className="w-4 h-4 text-indigo-200" />
+                <span>www.sangdi.net 바로가기</span>
+                <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <span className="text-[11px] text-slate-400 font-medium">
+                공식 홈페이지: www.sangdi.net
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* 리포트 하단 공시 및 직인 푸터 */}
-        <div className="mt-12 pt-6 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4 avoid-break">
-          <div className="flex items-center gap-2">
-            <FileCheck className="w-4 h-4 text-indigo-600" />
-            <span>
-              본 리포트는 학생부관리 입시컨설팅 AI플랫폼 <strong>‘생디(SAENGDI)’</strong>의 통계 알고리즘에 의해 자동 검증·발행되었습니다.
-            </span>
+        <div className="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4 avoid-break">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <FileCheck className="w-4 h-4 text-indigo-600 shrink-0" />
+              <span>
+                본 리포트는 학생부관리 입시컨설팅 AI플랫폼 <strong>‘생디(SAENGDI)’</strong>의 통계 알고리즘에 의해 자동 검증·발행되었습니다.
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 text-[11px] text-slate-600">
+              <Globe className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+              <span>생디 공식 웹사이트:</span>
+              <a
+                href="https://www.sangdi.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-indigo-700 underline hover:text-indigo-900"
+              >
+                www.sangdi.net
+              </a>
+              <span className="text-slate-300">|</span>
+              <span>2028 개정 교육과정 5등급제 & 9등급제 수시 합격률 정밀 진단 시스템</span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <span className="text-[11px] font-medium text-slate-400">
               입시컨설팅 공인 분석 시스템
             </span>
@@ -190,3 +266,4 @@ export const ReportContainer: React.FC<ReportContainerProps> = ({
     </div>
   );
 };
+

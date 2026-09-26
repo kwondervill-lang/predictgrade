@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SchoolLevel,
   StudentProfile,
@@ -62,6 +62,74 @@ export default function App() {
   const [highPrediction, setHighPrediction] = useState<HighSchoolPrediction | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
+
+  // 워드프레스 등 외부 iframe 삽입 시 스크롤 없이 부모창 높이를 자동 조절하기 위한 postMessage 전송
+  const notifyHeight = () => {
+    try {
+      if (typeof window !== 'undefined' && window.parent && window.parent !== window) {
+        const rootEl = document.getElementById('root');
+        const body = document.body;
+        const doc = document.documentElement;
+
+        const measuredHeight = Math.max(
+          body ? body.scrollHeight : 0,
+          body ? body.offsetHeight : 0,
+          doc ? doc.scrollHeight : 0,
+          doc ? doc.offsetHeight : 0,
+          rootEl ? rootEl.scrollHeight : 0,
+          rootEl ? rootEl.offsetHeight : 0
+        );
+
+        if (measuredHeight > 100) {
+          // 하단 그림자 및 푸터 잘림 방지를 위해 120px 여유 버퍼 추가
+          const totalHeight = measuredHeight + 120;
+          window.parent.postMessage(
+            {
+              type: 'SAENGDI_FRAME_RESIZE',
+              height: totalHeight,
+              view: currentView
+            },
+            '*'
+          );
+        }
+      }
+    } catch {
+      // cross-origin safe ignore
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    notifyHeight();
+    const t0 = setTimeout(notifyHeight, 60);
+    const t1 = setTimeout(notifyHeight, 180);
+    const t2 = setTimeout(notifyHeight, 500);
+    const t3 = setTimeout(notifyHeight, 1200);
+    const interval = setInterval(notifyHeight, 1000);
+
+    const observer = new ResizeObserver(() => {
+      notifyHeight();
+    });
+    if (document.body) {
+      observer.observe(document.body);
+    }
+    const rootEl = document.getElementById('root');
+    if (rootEl) {
+      observer.observe(rootEl);
+    }
+
+    window.addEventListener('resize', notifyHeight);
+
+    return () => {
+      clearTimeout(t0);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearInterval(interval);
+      observer.disconnect();
+      window.removeEventListener('resize', notifyHeight);
+    };
+  }, [currentView, profile, grades]);
 
   // 학교급(중학생/고등학생) 변경 시 성적 입력표 형식 동기화
   const handleProfileChange = (newProfile: StudentProfile) => {
@@ -235,7 +303,19 @@ export default function App() {
       {/* 하단 푸터 */}
       <footer className="no-print mt-12 bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© 2026 생디 (SaengDi) 학생부관리 입시컨설팅 AI 플랫폼. All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <span>© 2026 생디 (SaengDi) 학생부관리 입시컨설팅 AI 플랫폼.</span>
+            <span className="text-slate-300">|</span>
+            <span>공식 웹사이트:</span>
+            <a
+              href="https://www.sangdi.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-indigo-600 hover:text-indigo-800 font-bold underline"
+            >
+              www.sangdi.net
+            </a>
+          </div>
           <div className="flex items-center gap-4 text-slate-400">
             <span>2028 대입 개편 5등급제 완벽 호환</span>
             <span>·</span>

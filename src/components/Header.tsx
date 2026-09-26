@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrandLogo } from './BrandLogo';
 import { SchoolLevel } from '../types';
-import { Sparkles, HelpCircle, FileText, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Sparkles, HelpCircle, FileText, CheckCircle2, ChevronRight, Globe, ExternalLink } from 'lucide-react';
 
 interface HeaderProps {
   onLoadPreset: (level: SchoolLevel) => void;
@@ -33,6 +33,19 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* 우측 도구 바 */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="https://www.sangdi.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 hover:text-indigo-900 bg-indigo-50/80 hover:bg-indigo-100 px-2.5 py-1.5 rounded-lg border border-indigo-200/80 transition"
+              title="생디 입시컨설팅 공식 웹사이트"
+            >
+              <Globe className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="hidden sm:inline">공식홈</span>
+              <span className="font-mono text-[11px]">sangdi.net</span>
+              <ExternalLink className="w-3 h-3 text-indigo-500" />
+            </a>
+
             <button
               type="button"
               onClick={() => setShowGuideModal(true)}

@@ -412,10 +412,20 @@ export const MiddleSchoolReport: React.FC<MiddleSchoolReportProps> = ({
                 </div>
 
                 <div className="p-3 bg-indigo-50/60 rounded-xl border border-indigo-100">
-                  <span className="font-bold text-indigo-900 block mb-1 flex items-center gap-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
-                    ④ 생디 입시컨설팅 합격 전략 가이드
-                  </span>
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <span className="font-bold text-indigo-900 flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
+                      ④ 생디 입시컨설팅 합격 전략 가이드
+                    </span>
+                    <a
+                      href="https://www.sangdi.net"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-bold text-indigo-700 hover:text-indigo-900 underline shrink-0"
+                    >
+                      www.sangdi.net
+                    </a>
+                  </div>
                   <p className="text-indigo-950 font-medium leading-relaxed">
                     {pred.reasons.strategySummary}
                   </p>
